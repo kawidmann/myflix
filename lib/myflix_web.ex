@@ -40,6 +40,7 @@ defmodule MyflixWeb do
       import MyflixWeb.Router.Helpers
       import MyflixWeb.ErrorHelpers
       import MyflixWeb.Gettext
+      import MyflixWeb.Helpers.Auth, only: [signed_in?: 1]
     end
   end
 

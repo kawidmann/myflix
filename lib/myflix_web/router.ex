@@ -16,7 +16,13 @@ defmodule MyflixWeb.Router do
   scope "/", MyflixWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", SessionController, :new
+    post "/", SessionController, :create
+    delete "/sign-out", SessionController, :delete
+    resources "/registrations", UserController, only: [:new, :create]
+
+    get "/page", PageController, :index
+
   end
 
   # Other scopes may use custom stacks.
