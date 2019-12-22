@@ -4,9 +4,9 @@ defmodule Myflix.Accounts.User do
   alias Comeonin.Bcrypt
 
   schema "users" do
-    field :encrypted_password, :string
-    field :username, :string
-    field :email, :string
+    field :encrypted_password, :string, null: false
+    field :username, :string, null: false
+    field :email, :string, null: false
 
     timestamps()
   end

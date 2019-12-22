@@ -9,6 +9,10 @@ defmodule MyflixWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :authenticate do
+    plug MyflixWeb.Plugs.Authenticate
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -18,11 +22,14 @@ defmodule MyflixWeb.Router do
 
     get "/", SessionController, :new
     post "/", SessionController, :create
+  end
+
+  scope "/", MyflixWeb do
+    pipe_through [:browser, :authenticate]
+
     delete "/sign-out", SessionController, :delete
     resources "/registrations", UserController, only: [:new, :create]
-
     get "/page", PageController, :index
-
   end
 
   # Other scopes may use custom stacks.

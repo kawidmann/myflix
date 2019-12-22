@@ -5,14 +5,12 @@ defmodule Myflix.Accounts do
 
   import Ecto.Query, warn: false
   alias Myflix.Repo
-
+  alias Comeonin.Bcrypt
   alias Myflix.Accounts.User
 
-  def get_by_username(username) when is_nil(username) do
-    nil
-  end
-  def get_by_username(username) do
-    Repo.get_by(User, username: username)
+  def sign_in(%{"username" => username, "password" => password}) do
+    user = Repo.get_by(User, username: username)
+    Comeonin.Bcrypt.check_pass(user, password)
   end
 
   @doc """
