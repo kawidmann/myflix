@@ -56,3 +56,5 @@ config :myflix, Myflix.Repo,
   database: "myflix_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :myflix, :uploads_dir, "data/uploads/"

@@ -29,6 +29,8 @@ defmodule MyflixWeb.Router do
     delete "/sign-out", SessionController, :delete
     resources "/registrations", UserController, only: [:new, :create]
     get "/home", UserController, :index
+    resources "/videos", VideoController
+    get "/watch/:id", WatchController, :show
   end
 
   # Other scopes may use custom stacks.

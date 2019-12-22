@@ -1,0 +1,49 @@
+<h2>Show Video</h2>
+<ul>
+  <li>
+    <strong>Title:</strong>
+    <%= @video.title %>
+  </li>
+</ul>
+
+<video id="my-video" class="video-js" controls preload="none" width="640" height="264" data-setup="{}">
+  <source src="<%= watch_path(@conn, :show, @video) %>" type='<%= @video.type %>'>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+</video>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @video.name %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @video.type %>
+  </li>
+
+  <li>
+    <strong>Path:</strong>
+    <%= @video.path %>
+  </li>
+
+
+
+  <li>
+    <strong>Runtime:</strong>
+    <%= @video.runtime %>
+  </li>
+
+  <li>
+    <strong>Date produced:</strong>
+    <%= @video.date_produced %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: video_path(@conn, :edit, @video) %></span>
+<span><%= link "Back", to: video_path(@conn, :index) %></span>
