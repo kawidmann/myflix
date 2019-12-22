@@ -16,10 +16,15 @@ defmodule MyflixWeb.UserController do
         conn
         |>put_session(:current_user_id, user.id)
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: user_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  def index(conn, _params) do
+    user = conn.assigns[:current_user]
+    render(conn, "index.html", user: user)
   end
 
 end

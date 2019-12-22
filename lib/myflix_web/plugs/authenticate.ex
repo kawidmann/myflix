@@ -1,8 +1,10 @@
 defmodule MyflixWeb.Plugs.Authenticate do
   import Plug.Conn
+  import Phoenix.Controller, only: [redirect: 2]
 
   alias Myflix.Repo
   alias Myflix.Accounts.User
+
 
   def init(_params) do
   end
@@ -19,6 +21,7 @@ defmodule MyflixWeb.Plugs.Authenticate do
         conn
         |> assign(:current_user, nil)
         |> assign(:user_signed_in?, false)
+        |> redirect(to: "/")
     end
   end
 end
