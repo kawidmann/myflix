@@ -19,7 +19,6 @@ defmodule MyflixWeb.Router do
 
   scope "/", MyflixWeb do
     pipe_through :browser # Use the default browser stack
-
     get "/", SessionController, :new
     post "/", SessionController, :create
   end
