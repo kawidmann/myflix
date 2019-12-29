@@ -1,7 +1,6 @@
 defmodule MyflixWeb.WatchController do
   use MyflixWeb, :controller
   alias Myflix.Flix
-  alias Myflix.Flix.Video
 
   def show(%{req_headers: headers} = conn, %{"id" => id}) do
     video = Flix.get_video!(id)
