@@ -21,9 +21,7 @@ exports.config = {
     },
     stylesheets: {
       joinTo: {
-        "css/app.css",
-        "css/navbar.css",
-        "css/video-player.css"
+        "css/app.css": 'css/*.css'
       }
     },
     templates: {
