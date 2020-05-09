@@ -1,8 +1,21 @@
-<div class="video_background">
+<div id="video_background" class="center">
   <!-- Adds a scroll bar and line on the left without video_background and video_container-->
-  <div class="video_container">
-    <video class="video_player" src="<%= watch_path(@conn, :show, @video) %>" controls></video>
-
+  <div id="video_container" class="center">
+    <video id="video_player" src="<%= watch_path(@conn, :show, @video) %>" controls></video>
+    <!-- TODO Custom controls are pissing me off right now
     <%= link "Back", to: video_path(@conn, :index) %>
+    <div id="video-controls">
+
+      <input type="range" id="seek-bar" value="0">
+      <div id="left-controls">
+        <button type="button" id="play-pause">Play</button>
+      </div>
+      <div id="right-controls">
+        <button type="button" id="mute">Mute</button>
+        <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+        <button type="button" id="full-screen">Full-Screen</button>
+      </div>
+    </div>
+  -->
   </div>
 </div>

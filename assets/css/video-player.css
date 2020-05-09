@@ -1,35 +1,72 @@
-.video_background{
+.center{
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  overflow: hidden;
+}
+
+#video_background{
   /* Fills the screen to cover navbar */
   background-color: black;
   min-width: 100%;
   min-height: 100%;
-
-  /* Center the video */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  overflow: hidden;
 }
 
   /* Need both video_background and video_container to fill background, prevent scrollbars, and center video */
 
-.video_container{
+#video_container{
   background-color: black;
-
-  /* Center the video */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  overflow: hidden;
 }
 
-.video_player{
+#video_player{
   /* Video as big as possible responsively */
   width: 100vw;
   height: 100vh;
 
   /* removes blue line around video, its the "object selected" outline */
   outline: none;
+}
+
+#video-controls {
+  width: 100vw;
+  height: 10vh;
+  position: absolute;
+  bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  border-style: solid;
+  border-color: white;
+}
+
+#seek-bar {
+  width: 99vw;
+  margin: auto;
+}
+
+#left-controls, #left-controls > *{
+  float: left;
+  height: 100%;
+}
+
+#right-controls, #right-controls > *{
+  float: right;
+  height: 100%;
+}
+
+#video-controls button {
+  border:none;
+  cursor:pointer;
+  background:transparent;
+  background-size:contain;
+  background-repeat:no-repeat;
+}
+
+#video-controls button:hover{
+   opacity:0.5;
+}
+
+#play-pause {
+   background-image: url('/images/video_player/play.png');
 }
