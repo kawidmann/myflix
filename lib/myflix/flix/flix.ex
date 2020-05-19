@@ -8,6 +8,16 @@ defmodule Myflix.Flix do
 
   alias Myflix.Flix.Video
 
+  @endpoint "https://api.themoviedb.org/3"
+  @searchDom %{
+    company: "/search/company",
+    collection: "/search/collection",
+    keyword: "/search/keyword",
+    movie: "/search/movie",
+    person: "/search/person",
+    tv: "/search/tv"
+  }
+
   @doc """
   Returns the list of videos.
 
@@ -101,5 +111,57 @@ defmodule Myflix.Flix do
   """
   def change_video(%Video{} = video) do
     Video.changeset(video, %{})
+  end
+
+  # The movie database API
+
+  def search_all(term) do
+    Map.keys(@searchDom)
+    |> Enum.map(&search(&1, term))
+  end
+
+  # TODO get the query defaults from user settings
+
+  def search(type, term, page \\ 1) do
+    query = %{language: "en-US", page: page, query: term, include_adult: "false"}
+
+    (@endpoint <> @searchDom[type] <> "?" <> URI.encode_query(query))
+    |> send_request()
+  end
+
+  # media_type can be "all", "movie", "tv", or "person"
+  # time_window can be "day", "week"
+
+  def trending(media_type \\ "all", time_window \\ "day") do
+    "#{@endpoint}/trending/#{media_type}/#{time_window}"
+    |> send_request()
+  end
+
+  # details of sending the request, returns just the JSON response
+
+  defp send_request(url) do
+    case HTTPoison.get(url, headers(), options()) do
+      {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
+        {:ok, result} = {:ok, Jason.decode!(body)}
+        result
+
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        {:error, :not_found}
+
+      {:ok, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
+    end
+  end
+
+  # helper functions to fill out headers and options
+  defp headers() do
+    [
+      Authorization: "Bearer #{Application.get_env(:Myflix, :tmdb_key)}",
+      Accept: "Application/json; Charset=utf-8"
+    ]
+  end
+
+  defp options() do
+    [ssl: [{:versions, [:"tlsv1.2"]}], recv_timeout: 500]
   end
 end

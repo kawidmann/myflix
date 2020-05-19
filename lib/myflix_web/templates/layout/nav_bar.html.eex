@@ -1,8 +1,13 @@
 <ul>
   <li><%= link "Home", to: user_path(@conn, :index) %></li>
   <li><%= link "Videos", to: video_path(@conn, :index) %></li>
-  <li><%= if @conn.assigns[:user_signed_in?] do %>
-        <%= link "Sign out", to: session_path(@conn, :delete), method: :delete %>
-      <% end %></li>
+  <li id="search-bar">
+    <%= form_for @conn, search_path(@conn, :index), [name: :search], fn f -> %>
+      <%= text_input f, :query %> <%= submit "Search" %>
+    <% end %>
+  </li>
+  <%= if @conn.assigns[:user_signed_in?] do %>
+        <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
+      <% end %>
 
 </ul>

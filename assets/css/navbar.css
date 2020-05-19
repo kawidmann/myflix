@@ -15,7 +15,7 @@
   border-right: 1px solid #bbb;
 }
 
-.nav-bar li a {
+.nav-bar li a, #search-bar {
   display: block;
   color: white;
   text-align: center;
@@ -30,6 +30,10 @@
 
 .nav-bar .active {
   background-color: #4CAF50;
+}
+
+#search-bar {
+
 }
 
 .nav-bar li:last-child {

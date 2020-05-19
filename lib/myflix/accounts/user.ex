@@ -4,9 +4,9 @@ defmodule Myflix.Accounts.User do
   alias Comeonin.Bcrypt
 
   schema "users" do
-    field :encrypted_password, :string, null: false
-    field :username, :string, null: false
-    field :email, :string, null: false
+    field(:encrypted_password, :string, null: false)
+    field(:username, :string, null: false)
+    field(:email, :string, null: false)
 
     timestamps()
   end
@@ -16,7 +16,7 @@ defmodule Myflix.Accounts.User do
     user
     |> cast(attrs, [:username, :encrypted_password, :email])
     |> validate_required([:username, :encrypted_password, :email])
-    |> unique_constraint([:username, :email])
+    # |> unique_constraint([:username, :email])
     |> update_change(:encrypted_password, &Bcrypt.hashpwsalt/1)
   end
 end

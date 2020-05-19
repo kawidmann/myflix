@@ -6,9 +6,7 @@
       <th>Name</th>
       <th>Type</th>
       <th>Path</th>
-      <th>Title</th>
-      <th>Runtime</th>
-      <th>Date produced</th>
+
 
       <th></th>
     </tr>
@@ -19,9 +17,7 @@
       <td><%= video.name %></td>
       <td><%= video.type %></td>
       <td><%= video.path %></td>
-      <td><%= video.title %></td>
-      <td><%= video.runtime %></td>
-      <td><%= video.date_produced %></td>
+
 
       <td class="text-right">
         <span><%= link "Show", to: video_path(@conn, :show, video), class: "btn btn-default btn-xs" %></span>

@@ -11,8 +11,14 @@ config :myflix, MyflixWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/brunch/bin/brunch",
+      "watch",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -58,3 +64,7 @@ config :myflix, Myflix.Repo,
   pool_size: 10
 
 config :myflix, :uploads_dir, "data/uploads/"
+
+if File.exists?("config/dev.secret.exs") do
+  import_config "dev.secret.exs"
+end

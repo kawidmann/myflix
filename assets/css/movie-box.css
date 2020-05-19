@@ -1,0 +1,19 @@
+.movie-box {
+  display:inline-grid;
+  overflow: hidden;
+  width: 154px;
+  text-align: center;
+  margin: auto;
+  padding: 1vw;
+}
+
+.movie-box img {
+  width: 154px;
+  height: 231px;
+}
+
+.movie-box p {
+  display: block;
+  content: "";
+  margin: 0;
+}

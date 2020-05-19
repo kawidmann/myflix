@@ -1,0 +1,15 @@
+
+<%= for result <- @results["results"] do %>
+  <div class="movie-box">
+    <%= if result["poster_path"] == nil do %>
+      <%=img_tag(static_path(@conn, "/images/no_poster.jpeg"))%>
+    <% else %>
+      <%=img_tag("https://image.tmdb.org/t/p/w154/#{result["poster_path"]}")%>
+    <% end %>
+    <p><%= result["title"] %></p>
+    <p><%= result["vote_average"] %>/10</p>
+
+
+
+  </div>
+<% end %>

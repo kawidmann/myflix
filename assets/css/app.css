@@ -1,3 +1,9 @@
+main {
+  width: 90vw;
+  margin: auto;
+  margin-top: 1vh;
+  text-align: center;
+}
 .sign-in{
   width: 200px;
   margin: 0;
