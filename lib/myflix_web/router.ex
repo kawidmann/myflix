@@ -33,6 +33,10 @@ defmodule MyflixWeb.Router do
     resources("/videos", VideoController)
     get("/watch/:id", WatchController, :show)
     post("/search/", SearchController, :index)
+    get("/search/:id", SearchController, :show)
+    resources("/movie", MovieController, only: [:index, :show])
+    resources("/tv", TvController, only: [:index, :show])
+    resources("/person", PersonController, only: [:index, :show])
   end
 
   # Other scopes may use custom stacks.

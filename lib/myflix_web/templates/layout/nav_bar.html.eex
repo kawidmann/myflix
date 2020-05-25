@@ -1,6 +1,8 @@
 <ul>
   <li><%= link "Home", to: user_path(@conn, :index) %></li>
-  <li><%= link "Videos", to: video_path(@conn, :index) %></li>
+  <li><%= link "Movies", to: movie_path(@conn, :index) %></li>
+  <li><%= link "Tv Shows", to: tv_path(@conn, :index) %></li>
+  <li><%= link "People", to: person_path(@conn, :index) %></li>
   <li id="search-bar">
     <%= form_for @conn, search_path(@conn, :index), [name: :search], fn f -> %>
       <%= text_input f, :query %> <%= submit "Search" %>
