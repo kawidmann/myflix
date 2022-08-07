@@ -1,16 +1,10 @@
 defmodule MyflixWeb.SearchController do
   use MyflixWeb, :controller
   alias Myflix.External.Search
-  alias Myflix.External.Resources.Movie
 
   def index(conn, %{"query" => query}) do
-    results = Search.search("movie", query)
+    results = Search.search_all(query)
 
-    render(conn, "index.html", results: results)
-  end
-
-  def show(conn, %{"id" => id}) do
-    movie = Movie.get(id)
-    render(conn, "show.html", moive: movie)
+    render(conn, "index.html", results: List.wrap(results))
   end
 end

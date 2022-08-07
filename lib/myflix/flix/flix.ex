@@ -7,7 +7,6 @@ defmodule Myflix.Flix do
   alias Myflix.Repo
 
   alias Myflix.Flix.Video
-  alias Myflix.Flix.Movie
 
   @doc """
   Returns the list of videos.
@@ -103,12 +102,4 @@ defmodule Myflix.Flix do
   def change_video(%Video{} = video) do
     Video.changeset(video, %{})
   end
-
-  def create_movie(attrs \\ %{}) do
-    %Movie{}
-    |> Movie.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  def get_moive(id), do: Repo.get!(Movie, id)
 end

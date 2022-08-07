@@ -1,5 +1,5 @@
-<p><%= @moive.id %></p>
-<p><%= @moive.title %></p>
-<p><%= @moive.overview %></p>
-<p><%= @moive.tagline %></p>
-<%= img_tag("https://image.tmdb.org/t/p/original/#{@moive.backdrop_path}")%>
+<p><%= @movie.id %></p>
+<p><%= @movie.title %></p>
+<p><%= @movie.overview %></p>
+<p><%= @movie.tagline %></p>
+<%= img_tag("https://image.tmdb.org/t/p/original/#{@movie.backdrop_path}")%>

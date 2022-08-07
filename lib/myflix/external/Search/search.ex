@@ -1,11 +1,10 @@
 defmodule Myflix.External.Search do
   import Ecto.Query, warn: false
-  alias Myflix.Repo
   alias Myflix.External.Search.Results
   alias Myflix.External.TMDB
 
   def search_all(term) do
-    ["company", "collection", "keyword", "movie", "person", "tv"]
+    ["movie", "person", "tv"]
     |> Enum.map(&search(&1, term))
   end
 

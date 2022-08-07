@@ -1,7 +1,7 @@
 defmodule Myflix.External.Resources.Movie do
   import Ecto.Query, warn: false
-  alias Myflix.Repo
   alias Myflix.External.TMDB
+  alias Myflix.External.Search.Results
   alias Myflix.External.Resources.Movies
 
   def get(id) do

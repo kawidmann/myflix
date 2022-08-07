@@ -7,7 +7,7 @@
           _ -> "https://image.tmdb.org/t/p/w154/#{result.display_img}"
       end
       |> img_tag()
-      |> link(to: search_path(@conn, :show, result))
+      |> link(to: movie_path(@conn, :show, result))
       %>
     <p><%= result.name %></p>
     <p><%= result.vote_average %>/10</p>
