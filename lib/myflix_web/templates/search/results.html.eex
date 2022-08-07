@@ -1,0 +1,24 @@
+<div class="carousel">
+  <!-- <h2>@results.title</h2> -->
+  <%= for result <- @results.results do %>
+    <div class="movie-box">
+
+
+        <%= display_img(@conn, result.display_img)
+        |> img_tag()
+        |> link(to: result_link(@conn, result))
+        %>
+      <p><%= result.name %></p>
+      <%= if result.vote_average do %>
+      <p><%= result.vote_average %>/10</p>
+      <p><%= result.vote_count %></p>
+      <% end %>
+      <p><%= result.popularity %></p>
+      <p>ID is <%= result.id %></p>
+      <p><%=result.release_date%></p>
+      <p><%=result.video%></p>
+      <p><%=result.type%></p>
+
+    </div>
+  <% end %>
+</div>

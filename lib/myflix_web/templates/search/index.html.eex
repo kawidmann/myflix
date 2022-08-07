@@ -1,28 +1,7 @@
-<%=if @results.total_results == 0 do %>
-  <h3>0 search results</h3>
+<%= if zero_results?(@results) do %>
+  <h1>0 Results</h1>
 <% else %>
-<%= for result <- @results.results do %>
-  <div class="movie-box">
-
-
-      <%= case result.display_img do
-          nil -> static_path(@conn, "/images/no_poster.jpeg")
-          _ -> "https://image.tmdb.org/t/p/w154/#{result.display_img}"
-      end
-      |> img_tag()
-      |> link(to: search_path(@conn, :show, result))
-      %>
-    <p><%= result.name %></p>
-    <%= if result.vote_average do %>
-    <p><%= result.vote_average %>/10</p>
-    <p><%= result.vote_count %></p>
-    <% end %>
-    <p><%= result.popularity %></p>
-    <p>ID is <%= result.id %></p>
-    <p><%=result.release_date%></p>
-    <p><%=result.video%></p>
-    <p><%=result.type%></p>
-
-  </div>
-<% end %>
+  <%= for results <- @results do %>
+    <%= render MyflixWeb.CarouselView, "display.html", conn: @conn, results: results %>
+  <% end %>
 <% end %>

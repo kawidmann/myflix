@@ -8,8 +8,8 @@
       <%= text_input f, :query %> <%= submit "Search" %>
     <% end %>
   </li>
-  <%= if @conn.assigns[:user_signed_in?] do %>
-        <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
-      <% end %>
+    <%= if @conn.assigns[:user_signed_in?] do %>
+      <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
+    <% end %>
 
 </ul>

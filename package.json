@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/kawidmann/myflix/issues"
   },
-  "homepage": "https://github.com/kawidmann/myflix#readme"
+  "homepage": "https://github.com/kawidmann/myflix#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
 }
