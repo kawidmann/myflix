@@ -1,0 +1,22 @@
+<%= for result <- @person.results do %>
+  <div class="movie-box">
+
+
+      <%= case result.display_img do
+          nil -> static_path(@conn, "/images/no_poster.jpeg")
+          _ -> "https://image.tmdb.org/t/p/w154/#{result.display_img}"
+      end
+      |> img_tag()
+      |> link(to: person_path(@conn, :show, result))
+      %>
+    <p><%= result.name %></p>
+    <p><%= result.vote_average %>/10</p>
+    <p><%= result.vote_count %></p>
+    <p><%= result.popularity %></p>
+    <p>ID is <%= result.id %></p>
+    <p><%=result.release_date%></p>
+    <p><%=result.video%></p>
+    <p><%=result.type%></p>
+
+  </div>
+<% end %>

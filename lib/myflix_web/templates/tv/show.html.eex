@@ -1,0 +1,6 @@
+<p><%= @tv.id %></p>
+<p><%= @tv.name %></p>
+<p><%= @tv.in_production %></p>
+<p><%= @tv.overview %></p>
+<p><%= @tv.first_air_date %></p>
+<%= img_tag("https://image.tmdb.org/t/p/original/#{@tv.backdrop_path}")%>
